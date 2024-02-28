@@ -1,5 +1,13 @@
 <script setup>
     import { Form, Field, ErrorMessage  } from 'vee-validate';
+    import * as yup from 'yup';
+
+    const schema = yup.object({
+      name: yup.string().required().min(2),
+      surname: yup.string().required().min(2),
+      email: yup.string().required().email(),
+      message: yup.string().required().min(25),
+    });
 
 </script>
 
@@ -16,7 +24,6 @@
               name="name"
               class="form-input block w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Votre nom..."
-              :rules="validateName"
             >
             </Field>
             <ErrorMessage name="name" class="text-xs text-red-500"/>
@@ -31,7 +38,6 @@
               name="surname"
               class="form-input block w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Votre prénom..."
-              :rules="validateSurname"
             >
             </Field>
             <ErrorMessage name="surname" class="text-xs text-red-500"/>
@@ -46,7 +52,6 @@
               name="mail"
               class="form-input block w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Votre adresse mail..."
-              :rules="validateEmail"
             >
             </Field>
             <ErrorMessage name="mail" class="text-xs text-red-500"/>
@@ -61,7 +66,6 @@
               name="phone"
               class="form-input block w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Votre numéro de téléphone..."
-              :rules="validatePhone"
             >
             </Field>
             <ErrorMessage name="phone" class="text-xs text-red-500"/>
@@ -76,7 +80,6 @@
               name="message"
               class="form-input block w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Commencez à rédiger..."
-              :rules="validatePhone"
               as="textarea"
             >
             </Field>
