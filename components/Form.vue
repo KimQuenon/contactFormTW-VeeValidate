@@ -1,6 +1,9 @@
 <script setup>
     import { Form, Field, ErrorMessage  } from 'vee-validate';
     import * as yup from 'yup';
+    import { ref } from 'vue';
+
+    const successMessage = ref('');
 
     const schema = yup.object({
       name: yup.string().required().min(2),
@@ -10,8 +13,9 @@
       message: yup.string().required().min(25),
     });
 
-    const onSubmit = (values) => {
-      // console.log(values)
+    const onSubmit = (values, { resetForm }) => {
+      resetForm()
+      successMessage.value = 'Merci pour votre message!';
       return false;
     }
 
@@ -21,6 +25,9 @@
 <template>
     <div class="container mx-auto">
       <Form method="post" @submit="onSubmit" :validation-schema="schema">
+        <div v-if="successMessage" class="bg-green-200 text-green-800 border border-green-600 rounded-md px-4 py-2 mb-4">
+          {{ successMessage }}
+        </div>
 
         <div class="mb-4">
           <label>Nom<span class="text-red-600">*</span></label>
