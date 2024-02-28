@@ -3,8 +3,10 @@
     import * as yup from 'yup';
     import { ref } from 'vue';
 
+    //init successMessage
     const successMessage = ref('');
 
+    //array validation rules + empty fields
     const schema = yup.object({
       name: yup.string().required().min(2),
       surname: yup.string().required().min(2),
@@ -13,6 +15,7 @@
       message: yup.string().required().min(25),
     });
 
+    //submit form
     const onSubmit = (values, { resetForm }) => {
       resetForm()
       successMessage.value = 'Merci pour votre message!';
