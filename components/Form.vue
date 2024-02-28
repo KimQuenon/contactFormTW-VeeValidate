@@ -5,7 +5,7 @@
 
 
 <template>
-    <div>
+    <div class="container mx-auto">
       <Form @submit="onSubmit" :validation-schema="schema">
 
         <div class="mb-4">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="mb-4">
-          <label>Mail<span class="text-red-600">*</span></label>
+          <label>Adresse mail<span class="text-red-600">*</span></label>
           <div class="relative">
             <Field
               type="email"
@@ -54,7 +54,7 @@
         </div>
 
         <div class="mb-4">
-          <label>Phone<span class="text-red-600">*</span></label>
+          <label>Téléphone<span class="text-red-600">*</span></label>
           <div class="relative">
             <Field
               type="tel"
@@ -84,7 +84,7 @@
           </div>
         </div>
   
-        <button type="submit" class="btn btn-primary">Envoyer</button>
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Envoyer</button>
       </Form>
     </div>
   </template>
