@@ -6,15 +6,21 @@
       name: yup.string().required().min(2),
       surname: yup.string().required().min(2),
       email: yup.string().required().email(),
+      phone: yup.string().required().min(10),
       message: yup.string().required().min(25),
     });
+
+    const onSubmit = (values) => {
+      // console.log(values)
+      return false;
+    }
 
 </script>
 
 
 <template>
     <div class="container mx-auto">
-      <Form @submit="onSubmit" :validation-schema="schema">
+      <Form method="post" @submit="onSubmit" :validation-schema="schema">
 
         <div class="mb-4">
           <label>Nom<span class="text-red-600">*</span></label>
@@ -49,12 +55,12 @@
           <div class="relative">
             <Field
               type="email"
-              name="mail"
+              name="email"
               class="form-input block w-full border border-gray-300 rounded px-3 py-2"
               placeholder="Votre adresse mail..."
             >
             </Field>
-            <ErrorMessage name="mail" class="text-xs text-red-500"/>
+            <ErrorMessage name="email" class="text-xs text-red-500"/>
           </div>
         </div>
 
